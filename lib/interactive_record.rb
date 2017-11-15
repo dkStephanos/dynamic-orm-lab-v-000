@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class InteractiveRecord
 
@@ -56,8 +57,10 @@ class InteractiveRecord
   def self.find_by(name: value1 = nil, grade: value2 = nil)
     if value1 == nil
       sql = "SELECT * FROM #{self.table_name} WHERE grade = '#{value2}'"
+      binding.pry
     else
       sql = "SELECT * FROM #{self.table_name} WHERE name = '#{value1}'"
+      binding.pry
     end
     DB[:conn].execute(sql)
   end
