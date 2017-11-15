@@ -60,6 +60,7 @@ class InteractiveRecord
     if result == nil
       sql = "SELECT * FROM #{self.table_name} WHERE grade = '#{value[:grade]}'"
       result = DB[:conn].execute(sql)
+      binding.pry
     end
     result
   end
