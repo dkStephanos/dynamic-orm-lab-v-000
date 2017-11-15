@@ -53,8 +53,12 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(label: value)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{value}'"
+  def self.find_by(name: value1 = nil, grade: value2 = nil)
+    if value1 == nil
+      sql = "SELECT * FROM #{self.table_name} WHERE grade = '#{value2}'"
+    else
+      sql = "SELECT * FROM #{self.table_name} WHERE name = '#{value1}'"
+    end
     DB[:conn].execute(sql)
   end
 
